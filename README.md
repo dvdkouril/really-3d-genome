@@ -27,3 +27,18 @@
 |GMOL|[binaries](https://sourceforge.net/projects/gmol/)|[Nowotny 2016 SciRep](https://doi.org/10.1038/srep20802)||
 |Genome3D|[web](http://genome3d.org)|[Asbury 2010 BMCBioinf](https://doi.org/10.1186/1471-2105-11-444)||
 
+
+## Screenshots
+TODO: add screenshots of the 3D viewports in each tool (if possible)
+
+### WashU Epigenome Browser
+![washu](img/washu-epigenome-browser.png)
+
+### Nucleome Browser
+![nucleome](img/nucleome-browser.png)
+
+### SpaceWalk
+![spacewalk](https://raw.githubusercontent.com/igvteam/spacewalk/master/readme_img/spacewalk-screenshot.png)
+
+### GMOL
+![gmol](img/gmol.png)
