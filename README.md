@@ -22,15 +22,13 @@
 |TADkit|[code](https://github.com/3DGenomes/TADkit), [live](https://3dgenomes.github.io/TADkit/#/project/loader)|[Serra 2017 CompBio](https://doi.org/10.1371/journal.pcbi.1005665) (related)|
 |3DGB|[live](http://3dgb.cs.mcgill.ca/)|[Butyaev 2015](http://dx.doi.org/10.1093/nar/gkv476)|May 2015 (News tab)|
 |3Disease||[Li 2016 SciRep](https://doi.org/10.1038/srep34651)||
-|Delta||[Tang 2018 Bioinf](https://doi.org/10.1093/bioinformatics/btx805)||
-|GenomeFlow||[Trieu 2019 Bioinf](https://doi.org/10.1093/bioinformatics/bty802)||
+|Delta|[code](https://github.com/zhangzhwlab/delta), [web](https://delta.ngdc.cncb.ac.cn)|[Tang 2018 Bioinf](https://doi.org/10.1093/bioinformatics/btx805)||
+|GenomeFlow|[code](https://github.com/jianlin-cheng/GenomeFlow)|[Trieu 2019 Bioinf](https://doi.org/10.1093/bioinformatics/bty802)||
 |GMOL|[binaries](https://sourceforge.net/projects/gmol/)|[Nowotny 2016 SciRep](https://doi.org/10.1038/srep20802)||
 |Genome3D|[web](http://genome3d.org)|[Asbury 2010 BMCBioinf](https://doi.org/10.1186/1471-2105-11-444)||
 
 
 ## Screenshots
-TODO: add screenshots of the 3D viewports in each tool (if possible)
-
 ### WashU Epigenome Browser
 ![washu](img/washu-epigenome-browser.png)
 
@@ -39,6 +37,15 @@ TODO: add screenshots of the 3D viewports in each tool (if possible)
 
 ### SpaceWalk
 ![spacewalk](https://raw.githubusercontent.com/igvteam/spacewalk/master/readme_img/spacewalk-screenshot.png)
+
+### TADkit
+![tadkit](img/tadkit.png)
+
+### GenomeFlow
+![genomeflow](img/genomeflow.png)
+
+### 3DGB
+![3dgb](img/3dgb.png)
 
 ### GMOL
 ![gmol](img/gmol.png)
