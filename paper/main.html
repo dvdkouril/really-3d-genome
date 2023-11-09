@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-11-09 Thu 11:48 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Visualizing 3D genomic data</title>
+<meta name="author" content="David Kouril" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Visualizing 3D genomic data</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf18328b">1. Introduction</a></li>
+<li><a href="#org1522b85">2. Biological background</a></li>
+<li><a href="#org9096573">3. Previous Surveys</a></li>
+<li><a href="#orgc3576de">4. Chromatin Conformation Capture</a></li>
+<li><a href="#org2ca2b49">5. 3D Genome Data</a></li>
+<li><a href="#org890487e">6. Tools for Visualizing 3D Genome</a></li>
+<li><a href="#org00ff58a">7. References</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf18328b" class="outline-2">
+<h2 id="orgf18328b"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Almost everybody is familiar with DNA as the basic building block of life. Less known is the fact that DNA&rsquo;s folding in the cell nucleus plays a crucial role in its function. Indeed, it is difficult to imagine the packing of approx. 2~m long DNA fiber into a micron-sized nucleus. It is also difficult to get a detailed image of the folded structure&#x2014;also called chromatin&#x2014;through microscopy, due to chromatin&rsquo;s occupancy across several magnitudes of scale.
+Nevertheless, the significance of the genome&rsquo;s spatial organization led to attempts at unlocking the principles behind the multilevel and dynamic folding mechanisms. Besides investigations at the individual research group level, several consortia have been established behind the goal of elucidating the organization of genomic material in cells both in space and in time, e.g., 4DNucleome (<a href="#citeproc_bib_item_2">Dekker et al. 2017</a>).
+</p>
+
+<p>
+Genomes have historically been examined through 1D data, so-called \emph{genomic signals}.
+A special branch of visualization tools called \emph{genome browsers}, aligns genomic signals from various experiments along genomic coordinates for effective comparison.
+There have been efforts to capture the spatial conformation of genomes, through the so-called Chromosome Conformation Capture methodologies. We will explain the principles and caveats of their results in later sections.
+The use of 3D models and visualization is not a novel concept for the field, but this data modality is to this day largely underutilized in existing genome browsers.
+The DNA&rsquo;s folding however remains a strictly spatial phenomenon, which might make sense to examine in its natural 3D representation. We have seen, for example, in medicine~(<a href="#citeproc_bib_item_14">Preim and Bartz 2007</a>),(<a href="#citeproc_bib_item_15">Preim and Botha 2013</a>) and proteomics~(<a href="#citeproc_bib_item_7">Kozlíková et al. 2017</a>), that data visualization, and especially 3D visualization, can be a powerful tool in life science disciplines.
+</p>
+
+<p>
+We therefore dedicate this State of The Art Report to the investigation of the role of 3D data and visualization in genomics. Over the years we have seen 3D proven useful for the presentation of results. Branching into sci-art, 3D visualization is utilized for explaining biological structures and processes. The question remains, in which other use cases provides 3D visualization utility beyond that of presentations, at the end of an analytical pipeline.
+While we will focus our attention on 3D genomic data specifically, we also wish to generalize and look at the role of 3D in general. When is it useful to interact with and analyze directly the spatial three-dimensional representation, as opposed to a more abstract one?
+</p>
+
+<p>
+To summarize these ideas, we set out to write this survey with the following goals in mind:
+</p>
+<ul class="org-ul">
+<li><b>Provide a visualization researcher with a comprehensive introduction to the investigation of spatial chromatin structure</b>: We will consolidate available knowledge and existing approaches to modeling and visualizing genomes in 3D. It is especially important to present this information in a form digestable by data visualization researchers, who despite having previous biological knowledge might still not be oriented specifically in 3D genome modeling.</li>
+<li><b>Compile previously proposed visual representations and visualization tools for displaying 3D genomic data</b>: Over the past decades, several visualization tools claiming to visualize 3D genomes have emerged. There is a wide diversity of used representations, technologies, and even sources of 3D data, with varying degrees of utility in actual biological research. We will specifically identify known visualization techniques and principles, along with potential issues.</li>
+<li><b>Identify opportunities for data visualization&rsquo;s impact in 3D genome research:</b></li>
+</ul>
+
+<p>
+We will outline opportunities for improvement in terms of leveraging data characteristics for data storage, integration, proper visual representations, and interactions with the 3D data.
+</p>
+</div>
+</div>
+<div id="outline-container-org1522b85" class="outline-2">
+<h2 id="org1522b85"><span class="section-number-2">2.</span> Biological background</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In this section, we will provide a brief primer on biological concepts and terms, to provide context for 3D genomic data to visualization researchers with limited biological expertise.
+We will give definitions to concepts of a <i>gene</i>, <i>genome</i>, <i>bin</i>, etc.
+</p>
+</div>
+</div>
+<div id="outline-container-org9096573" class="outline-2">
+<h2 id="org9096573"><span class="section-number-2">3.</span> Previous Surveys</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The examination of spatial aspects of genomes through visualization has been going on since the 2000s.
+Several surveys examine 3D genomic data and its visualization from the biological perspective, focusing on the experiments and means of attaining a three-dimensional prediction of the chromatin structure. Data visualization is often included as an important part of the methodology, either implicitly or explicitly.
+</p>
+
+<p>
+Marti-Renom and Mirny (<a href="#citeproc_bib_item_11">Marti-Renom and Mirny 2011</a>) give a general introduction into&#x2014;at that time novel&#x2014;computational methods for investigating the three-dimensional organization of genomes.
+They highlight the need for computational models as a complement to microscopy imaging in efforts to gain insight into the genome&rsquo;s organization in space and time.
+Imakaev et al. (<a href="#citeproc_bib_item_6">Imakaev, Fudenberg, and Mirny 2015</a>) further give a great overview of methods for generating 3D models of chromatin conformation. Notable here is the grouping into two distinct groups: first, the 3D models are created from experimental data, while second, the models are created from basic physical properties known, or hypothesized, about the fiber.
+</p>
+
+<p>
+Several works examine the role of visualization in the effort to create a picture of chromatin folding. Most, again, approach the topic from the computational biology direction.
+First of all, Goodstadt and Marti-Renom (<a href="#citeproc_bib_item_4">Goodstadt N. and Marti-Renom 2017</a>) provide an excellent overview of 3D genomic data and challenges with its visualization. They pinpoint general characteristics of the data, such as being multiscale, multistate, time-dependent, and uncertain.
+What this survey lacks is a visualization perspective and an actionable set of opportunities for data visualization impact.
+</p>
+
+<p>
+The same two authors give a more detailed examination of depicting the architecture of genome folding (<a href="#citeproc_bib_item_5">Goodstadt and Marti-Renom 2019</a>). While an excellent resource&#x2014;almost diminishing the need for our original survey&#x2014;we find two issues with it.
+First of all, it groups all modalities for investigating chromatin conformation: both 2D matrices and 3D models are included. This makes the role of 3D visualization still uncertain and ambiguous.
+Second, they do not look at the topic through the data visualization lens. The survey nicely overviews existing approaches
+but does not contemplate used visual representations and their effectiveness. We wish to provide more actionable steps where leveraging existing data visualization principles can lead to insight in this branch of biology.
+</p>
+
+
+<p>
+Not many works have been published in data visualization or related venues. The most relevant is Nusrat et al.&rsquo;s paper (<a href="#citeproc_bib_item_13">Nusrat, Harbig, and Gehlenborg 2019</a>) containing a taxonomy for genomic data visualization. The authors give a comprehensive and general overview of data visualizations in genomics. Notably, the 3D data section&#x2014;in their definition the <i>spatial layout</i>&#x2014;is mentioned only briefly, hinting at additional complexities both in acquiring the 3D data, and visualizing them along the conventional genomic visualizations.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc3576de" class="outline-2">
+<h2 id="orgc3576de"><span class="section-number-2">4.</span> Chromatin Conformation Capture</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The pivotal methodology that allowed biologists to study the genome&rsquo;s spatial attributes is commonly grouped under the Chromatin Conformation Capture suite of experiments. Lajoie et al. (<a href="#citeproc_bib_item_8">Lajoie, Dekker, and Kaplan 2015</a>) provide a detailed description of the technique.
+Chromatin conformation capture experiments typically result in 2D matrices containing contact frequencies of same-sized genomic regions.
+In this section, we will explain on a high level methods such as 3C and Hi-C. We will also discuss the significant differences between bulk and single-cell versions of these experiments.
+</p>
+</div>
+</div>
+<div id="outline-container-org2ca2b49" class="outline-2">
+<h2 id="org2ca2b49"><span class="section-number-2">5.</span> 3D Genome Data</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+There are several distinct ways of acquiring spatial 3D models of genomic structures. Imakaev et al. (<a href="#citeproc_bib_item_6">Imakaev, Fudenberg, and Mirny 2015</a>) give a good overview and categorize the models into 2 categories, both including two groups.
+</p>
+</div>
+</div>
+<div id="outline-container-org890487e" class="outline-2">
+<h2 id="org890487e"><span class="section-number-2">6.</span> Tools for Visualizing 3D Genome</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Here, we overview previously proposed 3D genome visualization tools. For example:
+Genome3D (<a href="#citeproc_bib_item_1">Asbury et al. 2010</a>),
+GMOL (<a href="#citeproc_bib_item_12">Nowotny et al. 2016</a>), 3Disease Browser (<a href="#citeproc_bib_item_10">Li et al. 2016</a>),
+HiC-3DViewer (<a href="#citeproc_bib_item_3">Djekidel et al. 2017</a>), Delta (<a href="#citeproc_bib_item_16">Tang et al. 2017</a>),
+GenomeFlow (<a href="#citeproc_bib_item_18">Trieu et al. 2019</a>),
+CSynth (<a href="#citeproc_bib_item_17">Todd et al. 2020</a>).
+We see a trend where the development of most of these tools has been abandoned.
+We identified two established tools that implement 3D visualization functionality and are currently maintained:
+Nucleome Browser (<a href="#citeproc_bib_item_19">Zhu et al. 2022</a>) and WashU Epigenome Browser (<a href="#citeproc_bib_item_9">Li et al. 2019</a>).
+</p>
+</div>
+</div>
+<div id="outline-container-org00ff58a" class="outline-2">
+<h2 id="org00ff58a"><span class="section-number-2">7.</span> References</h2>
+<div class="outline-text-2" id="text-7">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Asbury, Thomas M., Matt Mitman, Jijun Tang, and W. Jim Zheng. 2010. “Genome3D: A Viewer-Model Framework for Integrating and Visualizing Multi-Scale Epigenomic Information within a Three-Dimensional Genome.” <i>Bmc Bioinformatics</i> 11 (1): 444. <a href="https://doi.org/10.1186/1471-2105-11-444">https://doi.org/10.1186/1471-2105-11-444</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Dekker, Job, Andrew S Belmont, Mitchell Guttman, Victor O Leshyk, John T Lis, Stavros Lomvardas, Leonid A Mirny, et al. 2017. “The 4D Nucleome Project.” <i>Nature</i> 549 (7671): 219–26.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Djekidel, Mohamed Nadhir, Mengjie Wang, Michael Q. Zhang, and Juntao Gao. 2017. “HiC-3DViewer: A New Tool to Visualize Hi-C Data in 3D Space.” <i>Quantitative Biology</i> 5 (2): 183–90. <a href="https://doi.org/10.1007/s40484-017-0091-8">https://doi.org/10.1007/s40484-017-0091-8</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Goodstadt N., Mike, and Marc A. Marti-Renom. 2017. “Challenges for Visualizing Three-Dimensional Data in Genomic Browsers.” <i>Febs Letters</i> 591 (17): 2505–19. <a href="https://doi.org/https://doi.org/10.1002/1873-3468.12778">https://doi.org/https://doi.org/10.1002/1873-3468.12778</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Goodstadt, Mike N., and Marc A. Marti-Renom. 2019. “Communicating Genome Architecture: Biovisualization of the Genome, from Data Analysis and Hypothesis Generation to Communication and Learning.” <i>Journal of Molecular Biology</i> 431 (6): 1071–87. <a href="https://doi.org/https://doi.org/10.1016/j.jmb.2018.11.008">https://doi.org/https://doi.org/10.1016/j.jmb.2018.11.008</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_6"></a>Imakaev, Maxim V., Geoffrey Fudenberg, and Leonid A. Mirny. 2015. “Modeling Chromosomes: Beyond Pretty Pictures.” <i>Febs Letters</i> 589 (20PartA): 3031–36. <a href="https://doi.org/10.1016/j.febslet.2015.09.004">https://doi.org/10.1016/j.febslet.2015.09.004</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_7"></a>Kozlíková, B., M. Krone, M. Falk, N. Lindow, M. Baaden, D. Baum, I. Viola, J. Parulek, and H.-C. Hege. 2017. “Visualization of Biomolecular Structures: State of the Art Revisited.” <i>Computer Graphics Forum</i> 36 (8): 178–204. <a href="https://doi.org/https://doi.org/10.1111/cgf.13072">https://doi.org/https://doi.org/10.1111/cgf.13072</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_8"></a>Lajoie, Bryan R., Job Dekker, and Noam Kaplan. 2015. “The Hitchhiker’s Guide to Hi-C Analysis: Practical Guidelines.” <i>Methods</i> 72: 65–75. <a href="https://doi.org/https://doi.org/10.1016/j.ymeth.2014.10.031">https://doi.org/https://doi.org/10.1016/j.ymeth.2014.10.031</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_9"></a>Li, Daofeng, Silas Hsu, Deepak Purushotham, Renee L Sears, and Ting Wang. 2019. “WashU Epigenome Browser Update 2019.” <i>Nucleic Acids Research</i> 47 (W1): W158–65. <a href="https://doi.org/10.1093/nar/gkz348">https://doi.org/10.1093/nar/gkz348</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_10"></a>Li, Ruifeng, Yifang Liu, Tingting Li, and Cheng Li. 2016. “3Disease Browser: A Web Server for Integrating 3D Genome and Disease-Associated Chromosome Rearrangement Data.” <i>Scientific Reports</i> 6 (1): 34651. <a href="https://doi.org/10.1038/srep34651">https://doi.org/10.1038/srep34651</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_11"></a>Marti-Renom, Marc A., and Leonid A. Mirny. 2011. “Bridging the Resolution Gap in Structural Modeling of 3D Genome Organization.” <i>Plos Computational Biology</i> 7 (7): 1–6. <a href="https://doi.org/10.1371/journal.pcbi.1002125">https://doi.org/10.1371/journal.pcbi.1002125</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_12"></a>Nowotny, Jackson, Avery Wells, Oluwatosin Oluwadare, Lingfei Xu, Renzhi Cao, Tuan Trieu, Chenfeng He, and Jianlin Cheng. 2016. “GMOL: An Interactive Tool for 3D Genome Structure Visualization.” <i>Scientific Reports</i> 6 (1): 20802. <a href="https://doi.org/10.1038/srep20802">https://doi.org/10.1038/srep20802</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_13"></a>Nusrat, S., T. Harbig, and N. Gehlenborg. 2019. “Tasks, Techniques, and Tools for Genomic Data Visualization.” <i>Computer Graphics Forum</i> 38 (3): 781–805. <a href="https://doi.org/https://doi.org/10.1111/cgf.13727">https://doi.org/https://doi.org/10.1111/cgf.13727</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_14"></a>Preim, Bernhard, and Dirk Bartz. 2007. <i>Visualization in Medicine: Theory, Algorithms, and Applications</i>. Elsevier.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_15"></a>Preim, Bernhard, and Charl P Botha. 2013. <i>Visual Computing for Medicine: Theory, Algorithms, and Applications</i>. Newnes.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_16"></a>Tang, Bixia, Feifei Li, Jing Li, Wenming Zhao, and Zhihua Zhang. 2017. “Delta: A New Web-Based 3D Genome Visualization and Analysis Platform.” <i>Bioinformatics</i> 34 (8): 1409–10. <a href="https://doi.org/10.1093/bioinformatics/btx805">https://doi.org/10.1093/bioinformatics/btx805</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_17"></a>Todd, Stephen, Peter Todd, Simon J McGowan, James R Hughes, Yasutaka Kakui, Frederic Fol Leymarie, William Latham, and Stephen Taylor. 2020. “CSynth: An Interactive Modelling and Visualization Tool for 3D Chromatin Structure.” <i>Bioinformatics</i> 37 (7): 951–55. <a href="https://doi.org/10.1093/bioinformatics/btaa757">https://doi.org/10.1093/bioinformatics/btaa757</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_18"></a>Trieu, Tuan, Oluwatosin Oluwadare, Julia Wopata, and Jianlin Cheng. 2019. “GenomeFlow: A Comprehensive Graphical Tool for Modeling and Analyzing 3D Genome Structure.” <i>Bioinformatics (Oxford, England)</i> 35 (8): 1416–18. <a href="https://doi.org/10.1093/bioinformatics/bty802">https://doi.org/10.1093/bioinformatics/bty802</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_19"></a>Zhu, Xiaopeng, Yang Zhang, Yuchuan Wang, Dechao Tian, Andrew S. Belmont, Jason R. Swedlow, and Jian Ma. 2022. “Nucleome Browser: An Integrative and Multimodal Data Navigation Platform for 4D Nucleome.” <i>Nature Methods</i> 19: 911–13. <a href="https://doi.org/10.1038/s41592-022-01559-3">https://doi.org/10.1038/s41592-022-01559-3</a>.</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: David Kouril</p>
+<p class="date">Created: 2023-11-09 Thu 11:48</p>
+</div>
+</body>
+</html>
