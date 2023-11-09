@@ -2,15 +2,17 @@
 #+author: David Kouril
 #+bibliography: star3dgenome.bib
 #+cite_export: csl
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles.css"/>
+
 * Introduction
-Almost everybody is familiar with DNA as the basic building block of life. Less known is the fact that DNA's folding in the cell nucleus plays a crucial role in its function. Indeed, it is difficult to imagine the packing of approx. 2~m long DNA fiber into a micron-sized nucleus. It is also difficult to get a detailed image of the folded structure---also called chromatin---through microscopy, due to chromatin's occupancy across several magnitudes of scale.
+Almost everybody is familiar with DNA as the basic building block of life. Less known is the fact that DNA's folding in the cell nucleus plays a crucial role in its function. Indeed, it is difficult to imagine the packing of approx. 2 m long DNA fiber into a micron-sized nucleus. It is also difficult to get a detailed image of the folded structure---also called chromatin---through microscopy, due to chromatin's occupancy across several magnitudes of scale.
 Nevertheless, the significance of the genome's spatial organization led to attempts at unlocking the principles behind the multilevel and dynamic folding mechanisms. Besides investigations at the individual research group level, several consortia have been established behind the goal of elucidating the organization of genomic material in cells both in space and in time, e.g., 4DNucleome [cite:@dekker_4d_2017].
 
-Genomes have historically been examined through 1D data, so-called \emph{genomic signals}.
-A special branch of visualization tools called \emph{genome browsers}, aligns genomic signals from various experiments along genomic coordinates for effective comparison.
+Genomes have historically been examined through 1D data, so-called /genomic signals/.
+A special branch of visualization tools called /genome browsers/, aligns genomic signals from various experiments along genomic coordinates for effective comparison.
 There have been efforts to capture the spatial conformation of genomes, through the so-called Chromosome Conformation Capture methodologies. We will explain the principles and caveats of their results in later sections.
 The use of 3D models and visualization is not a novel concept for the field, but this data modality is to this day largely underutilized in existing genome browsers.
-The DNA's folding however remains a strictly spatial phenomenon, which might make sense to examine in its natural 3D representation. We have seen, for example, in medicine~[cite:@preim_visualization_2007],[cite:@preim_visual_2013] and proteomics~[cite:@kozlikova_visualization_2017], that data visualization, and especially 3D visualization, can be a powerful tool in life science disciplines.
+The DNA's folding however remains a strictly spatial phenomenon, which might make sense to examine in its natural 3D representation. We have seen, for example, in medicine[cite:@preim_visualization_2007],[cite:@preim_visual_2013] and proteomics [cite:@kozlikova_visualization_2017], that data visualization, and especially 3D visualization, can be a powerful tool in life science disciplines.
 
 We therefore dedicate this State of The Art Report to the investigation of the role of 3D data and visualization in genomics. Over the years we have seen 3D proven useful for the presentation of results. Branching into sci-art, 3D visualization is utilized for explaining biological structures and processes. The question remains, in which other use cases provides 3D visualization utility beyond that of presentations, at the end of an analytical pipeline.
 While we will focus our attention on 3D genomic data specifically, we also wish to generalize and look at the role of 3D in general. When is it useful to interact with and analyze directly the spatial three-dimensional representation, as opposed to a more abstract one?

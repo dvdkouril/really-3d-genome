@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-11-09 Thu 11:48 -->
+<!-- 2023-11-09 Thu 12:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Visualizing 3D genomic data</title>
@@ -193,6 +193,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<link rel="stylesheet" type="text/css" href="styles.css"/>
 <script>
   window.MathJax = {
     tex: {
@@ -233,18 +234,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf18328b">1. Introduction</a></li>
-<li><a href="#org1522b85">2. Biological background</a></li>
-<li><a href="#org9096573">3. Previous Surveys</a></li>
-<li><a href="#orgc3576de">4. Chromatin Conformation Capture</a></li>
-<li><a href="#org2ca2b49">5. 3D Genome Data</a></li>
-<li><a href="#org890487e">6. Tools for Visualizing 3D Genome</a></li>
-<li><a href="#org00ff58a">7. References</a></li>
+<li><a href="#org82b89a2">1. Introduction</a></li>
+<li><a href="#orgbba7600">2. Biological background</a></li>
+<li><a href="#orgcd5d14f">3. Previous Surveys</a></li>
+<li><a href="#org1f48362">4. Chromatin Conformation Capture</a></li>
+<li><a href="#orgdf1356b">5. 3D Genome Data</a></li>
+<li><a href="#org22f1d3a">6. Tools for Visualizing 3D Genome</a></li>
+<li><a href="#org1285917">7. References</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf18328b" class="outline-2">
-<h2 id="orgf18328b"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-org82b89a2" class="outline-2">
+<h2 id="org82b89a2"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Almost everybody is familiar with DNA as the basic building block of life. Less known is the fact that DNA&rsquo;s folding in the cell nucleus plays a crucial role in its function. Indeed, it is difficult to imagine the packing of approx. 2~m long DNA fiber into a micron-sized nucleus. It is also difficult to get a detailed image of the folded structure&#x2014;also called chromatin&#x2014;through microscopy, due to chromatin&rsquo;s occupancy across several magnitudes of scale.
@@ -278,8 +279,8 @@ We will outline opportunities for improvement in terms of leveraging data charac
 </p>
 </div>
 </div>
-<div id="outline-container-org1522b85" class="outline-2">
-<h2 id="org1522b85"><span class="section-number-2">2.</span> Biological background</h2>
+<div id="outline-container-orgbba7600" class="outline-2">
+<h2 id="orgbba7600"><span class="section-number-2">2.</span> Biological background</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 In this section, we will provide a brief primer on biological concepts and terms, to provide context for 3D genomic data to visualization researchers with limited biological expertise.
@@ -287,8 +288,8 @@ We will give definitions to concepts of a <i>gene</i>, <i>genome</i>, <i>bin</i>
 </p>
 </div>
 </div>
-<div id="outline-container-org9096573" class="outline-2">
-<h2 id="org9096573"><span class="section-number-2">3.</span> Previous Surveys</h2>
+<div id="outline-container-orgcd5d14f" class="outline-2">
+<h2 id="orgcd5d14f"><span class="section-number-2">3.</span> Previous Surveys</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The examination of spatial aspects of genomes through visualization has been going on since the 2000s.
@@ -320,8 +321,8 @@ Not many works have been published in data visualization or related venues. The 
 </p>
 </div>
 </div>
-<div id="outline-container-orgc3576de" class="outline-2">
-<h2 id="orgc3576de"><span class="section-number-2">4.</span> Chromatin Conformation Capture</h2>
+<div id="outline-container-org1f48362" class="outline-2">
+<h2 id="org1f48362"><span class="section-number-2">4.</span> Chromatin Conformation Capture</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The pivotal methodology that allowed biologists to study the genome&rsquo;s spatial attributes is commonly grouped under the Chromatin Conformation Capture suite of experiments. Lajoie et al. (<a href="#citeproc_bib_item_8">Lajoie, Dekker, and Kaplan 2015</a>) provide a detailed description of the technique.
@@ -330,16 +331,16 @@ In this section, we will explain on a high level methods such as 3C and Hi-C. We
 </p>
 </div>
 </div>
-<div id="outline-container-org2ca2b49" class="outline-2">
-<h2 id="org2ca2b49"><span class="section-number-2">5.</span> 3D Genome Data</h2>
+<div id="outline-container-orgdf1356b" class="outline-2">
+<h2 id="orgdf1356b"><span class="section-number-2">5.</span> 3D Genome Data</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 There are several distinct ways of acquiring spatial 3D models of genomic structures. Imakaev et al. (<a href="#citeproc_bib_item_6">Imakaev, Fudenberg, and Mirny 2015</a>) give a good overview and categorize the models into 2 categories, both including two groups.
 </p>
 </div>
 </div>
-<div id="outline-container-org890487e" class="outline-2">
-<h2 id="org890487e"><span class="section-number-2">6.</span> Tools for Visualizing 3D Genome</h2>
+<div id="outline-container-org22f1d3a" class="outline-2">
+<h2 id="org22f1d3a"><span class="section-number-2">6.</span> Tools for Visualizing 3D Genome</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Here, we overview previously proposed 3D genome visualization tools. For example:
@@ -354,8 +355,8 @@ Nucleome Browser (<a href="#citeproc_bib_item_19">Zhu et al. 2022</a>) and WashU
 </p>
 </div>
 </div>
-<div id="outline-container-org00ff58a" class="outline-2">
-<h2 id="org00ff58a"><span class="section-number-2">7.</span> References</h2>
+<div id="outline-container-org1285917" class="outline-2">
+<h2 id="org1285917"><span class="section-number-2">7.</span> References</h2>
 <div class="outline-text-2" id="text-7">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Asbury, Thomas M., Matt Mitman, Jijun Tang, and W. Jim Zheng. 2010. “Genome3D: A Viewer-Model Framework for Integrating and Visualizing Multi-Scale Epigenomic Information within a Three-Dimensional Genome.” <i>Bmc Bioinformatics</i> 11 (1): 444. <a href="https://doi.org/10.1186/1471-2105-11-444">https://doi.org/10.1186/1471-2105-11-444</a>.</div>
@@ -383,7 +384,7 @@ Nucleome Browser (<a href="#citeproc_bib_item_19">Zhu et al. 2022</a>) and WashU
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: David Kouril</p>
-<p class="date">Created: 2023-11-09 Thu 11:48</p>
+<p class="date">Created: 2023-11-09 Thu 12:51</p>
 </div>
 </body>
 </html>
