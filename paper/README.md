@@ -5,6 +5,9 @@ This folder contains source text for a research paper summarizing the efforts in
 The document is written in org-mode, native to the Emacs editor. Using org-mode, we can export into various formats: Latex->PDF, HTML, Markdown etc.
 
 Step-by-step:
-1. open `main.org` in Emacs
+1. open `index.org` in Emacs
 2. export bibliography from Zotero into `star3dgenome.bib` (TODO: set up bib file autosync)
 3. `C-c C-e h h` for web export
+
+## Web version
+On push, Github Actions uploads whatever ends up exported in index.html to Github Pages: [dvdkouril.github.io/really-3d-genome](https://dvdkouril.github.io/really-3d-genome/). Make sure to export (see above) from the org file into index.html before pushing; in the future I might be able to automatize the exporting step, too.
