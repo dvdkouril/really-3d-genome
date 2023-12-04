@@ -4,6 +4,12 @@
 #+cite_export: csl
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles.css"/>
 
+#+BEGIN_CENTER
+/DISCLAIMER/: *This is a heavily work-in-progress document.*\\
+I do not guarantee that all parts are readable or perfectly correct at this stage.
+#+END_CENTER
+
+
 * Introduction
 Almost everybody is familiar with DNA as the basic building block of life. Less known is the fact that DNA's folding in the cell nucleus plays a crucial role in its function. Indeed, it is difficult to imagine the packing of approx. 2 m long DNA fiber into a micron-sized nucleus. It is also difficult to get a detailed image of the folded structure---also called chromatin---through microscopy, due to chromatin's occupancy across several magnitudes of scale.
 Nevertheless, the significance of the genome's spatial organization led to attempts at unlocking the principles behind the multilevel and dynamic folding mechanisms. Besides investigations at the individual research group level, several consortia have been established behind the goal of elucidating the organization of genomic material in cells both in space and in time, e.g., 4DNucleome [cite:@dekker_4d_2017].
