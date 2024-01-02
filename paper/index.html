@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-01-02 Tue 11:26 -->
+<!-- 2024-01-02 Tue 11:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Visualizing 3D genomic data</title>
@@ -202,18 +202,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd8477ee">1. Introduction</a></li>
-<li><a href="#orgdb98923">2. Biological background</a></li>
-<li><a href="#org4fdb45c">3. Previous Surveys</a></li>
-<li><a href="#org02fbe7c">4. Chromatin Conformation Capture</a></li>
-<li><a href="#org7fe66fe">5. 3D Genome Data</a>
+<li><a href="#orgd985d23">1. Introduction</a></li>
+<li><a href="#org7c46f2b">2. Biological background</a></li>
+<li><a href="#orgd0d90d5">3. Previous Surveys</a></li>
+<li><a href="#orge520a1c">4. Chromatin Conformation Capture</a></li>
+<li><a href="#orgb3e35a4">5. 3D Genome Data</a>
 <ul>
-<li><a href="#orgda3ea8d">5.1. Data Formats</a></li>
+<li><a href="#org69099a9">5.1. Data Formats</a></li>
 </ul>
 </li>
-<li><a href="#org0e813aa">6. Tools for Visualizing 3D Genome</a></li>
-<li><a href="#org1d7e0a4">7. Challenges</a></li>
-<li><a href="#org5d44774">8. References</a></li>
+<li><a href="#org2567250">6. Tools for Visualizing 3D Genome</a></li>
+<li><a href="#org046eed7">7. Challenges</a></li>
+<li><a href="#org9363df4">8. References</a></li>
 </ul>
 </div>
 </div>
@@ -223,8 +223,8 @@
 I do not guarantee that all parts are readable or perfectly correct at this stage.
 </p>
 </div>
-<div id="outline-container-orgd8477ee" class="outline-2">
-<h2 id="orgd8477ee"><span class="section-number-2">1.</span> Introduction</h2>
+<div id="outline-container-orgd985d23" class="outline-2">
+<h2 id="orgd985d23"><span class="section-number-2">1.</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Almost everybody is familiar with DNA as the basic building block of life. Less known is the fact that DNA&rsquo;s folding in the cell nucleus plays a crucial role in its function. Indeed, it is difficult to imagine the packing of approx. 2 m long DNA fiber into a micron-sized nucleus. It is also difficult to get a detailed image of the folded structure&#x2014;also called chromatin&#x2014;through microscopy, due to chromatin&rsquo;s occupancy across several magnitudes of scale.
@@ -258,8 +258,8 @@ We will outline opportunities for improvement in terms of leveraging data charac
 </p>
 </div>
 </div>
-<div id="outline-container-orgdb98923" class="outline-2">
-<h2 id="orgdb98923"><span class="section-number-2">2.</span> Biological background</h2>
+<div id="outline-container-org7c46f2b" class="outline-2">
+<h2 id="org7c46f2b"><span class="section-number-2">2.</span> Biological background</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 In this section, we will provide a brief primer on biological concepts and terms, to provide context for 3D genomic data to visualization researchers with limited biological expertise.
@@ -267,8 +267,8 @@ We will give definitions to concepts of a <i>gene</i>, <i>genome</i>, <i>bin</i>
 </p>
 </div>
 </div>
-<div id="outline-container-org4fdb45c" class="outline-2">
-<h2 id="org4fdb45c"><span class="section-number-2">3.</span> Previous Surveys</h2>
+<div id="outline-container-orgd0d90d5" class="outline-2">
+<h2 id="orgd0d90d5"><span class="section-number-2">3.</span> Previous Surveys</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The examination of spatial aspects of genomes through visualization has been going on since the 2000s.
@@ -300,8 +300,8 @@ Not many works have been published in data visualization or related venues. The 
 </p>
 </div>
 </div>
-<div id="outline-container-org02fbe7c" class="outline-2">
-<h2 id="org02fbe7c"><span class="section-number-2">4.</span> Chromatin Conformation Capture</h2>
+<div id="outline-container-orge520a1c" class="outline-2">
+<h2 id="orge520a1c"><span class="section-number-2">4.</span> Chromatin Conformation Capture</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The pivotal methodology that allowed biologists to study the genome&rsquo;s spatial attributes is commonly grouped under the Chromatin Conformation Capture suite of experiments. Lajoie et al. (<a href="#citeproc_bib_item_10">Lajoie, Dekker, and Kaplan 2015</a>) provide a detailed description of the technique.
@@ -310,24 +310,24 @@ In this section, we will explain on a high level methods such as 3C and Hi-C. We
 </p>
 </div>
 </div>
-<div id="outline-container-org7fe66fe" class="outline-2">
-<h2 id="org7fe66fe"><span class="section-number-2">5.</span> 3D Genome Data</h2>
+<div id="outline-container-orgb3e35a4" class="outline-2">
+<h2 id="orgb3e35a4"><span class="section-number-2">5.</span> 3D Genome Data</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 There are several distinct ways of acquiring spatial 3D models of genomic structures. Imakaev et al. (<a href="#citeproc_bib_item_8">Imakaev, Fudenberg, and Mirny 2015</a>) give a good overview and categorize the models into 2 categories, both including two groups.
 </p>
 </div>
-<div id="outline-container-orgda3ea8d" class="outline-3">
-<h3 id="orgda3ea8d"><span class="section-number-3">5.1.</span> Data Formats</h3>
+<div id="outline-container-org69099a9" class="outline-3">
+<h3 id="org69099a9"><span class="section-number-3">5.1.</span> Data Formats</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
-No standard format emerged yet. Many tools repurpose the Protein Data Bank (PDB) 
+No standard format emerged yet. Many tools repurpose the Protein Data Bank (PDB) file format. At least two file formats have been developed alongside specific tools: the nucle3D format (used by Nucleome Browser) and g3d (used by WashU Epigenome Browser).
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org0e813aa" class="outline-2">
-<h2 id="org0e813aa"><span class="section-number-2">6.</span> Tools for Visualizing 3D Genome</h2>
+<div id="outline-container-org2567250" class="outline-2">
+<h2 id="org2567250"><span class="section-number-2">6.</span> Tools for Visualizing 3D Genome</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Here, we overview previously proposed 3D genome visualization tools. For example:
@@ -347,8 +347,8 @@ Some categories by which we can sort these tools: a) web/desktop, b) AR and VR, 
 </p>
 </div>
 </div>
-<div id="outline-container-org1d7e0a4" class="outline-2">
-<h2 id="org1d7e0a4"><span class="section-number-2">7.</span> Challenges</h2>
+<div id="outline-container-org046eed7" class="outline-2">
+<h2 id="org046eed7"><span class="section-number-2">7.</span> Challenges</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Missing a unified file format.
@@ -358,8 +358,8 @@ Interoprable tools instead of separate visual analytics systems.
 </p>
 </div>
 </div>
-<div id="outline-container-org5d44774" class="outline-2">
-<h2 id="org5d44774"><span class="section-number-2">8.</span> References</h2>
+<div id="outline-container-org9363df4" class="outline-2">
+<h2 id="org9363df4"><span class="section-number-2">8.</span> References</h2>
 <div class="outline-text-2" id="text-8">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Asbury, Thomas M., Matt Mitman, Jijun Tang, and W. Jim Zheng. 2010. “Genome3D: A Viewer-Model Framework for Integrating and Visualizing Multi-Scale Epigenomic Information within a Three-Dimensional Genome.” <i>Bmc Bioinformatics</i> 11 (1): 444. <a href="https://doi.org/10.1186/1471-2105-11-444">https://doi.org/10.1186/1471-2105-11-444</a>.</div>
@@ -390,7 +390,7 @@ Interoprable tools instead of separate visual analytics systems.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: David Kouril</p>
-<p class="date">Created: 2024-01-02 Tue 11:26</p>
+<p class="date">Created: 2024-01-02 Tue 11:38</p>
 </div>
 </body>
 </html>
