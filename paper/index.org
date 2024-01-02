@@ -62,6 +62,9 @@ In this section, we will explain on a high level methods such as 3C and Hi-C. We
 * 3D Genome Data
 There are several distinct ways of acquiring spatial 3D models of genomic structures. Imakaev et al. [cite:@imakaev_modeling_2015] give a good overview and categorize the models into 2 categories, both including two groups.
 
+** Data Formats
+No standard format emerged yet. Many tools repurpose the Protein Data Bank (PDB) file format. At least two file formats have been developed alongside specific tools: the nucle3D format (used by Nucleome Browser) and g3d (used by WashU Epigenome Browser).
+
 * Tools for Visualizing 3D Genome
 Here, we overview previously proposed 3D genome visualization tools. For example:
 Genome3D [cite:@asbury_genome3d_2010],
@@ -69,10 +72,18 @@ GMOL [cite:@nowotny_gmol_2016], 3Disease Browser [cite:@li_3disease_2016],
 HiC-3DViewer [cite:@djekidel_hic-3dviewer_2017], Delta [cite:@tang_delta_2017],
 GenomeFlow [cite:@trieu_genomeflow_2019],
 CSynth [cite:@todd_csynth_2020].
+3DBG/3DGB [cite:@butyaev_low-latency_2015], TADbit/TADkit [cite:@serra_automatic_2017][cite:@goodstadt_tadkit_2015].
 We see a trend where the development of most of these tools has been abandoned.
 We identified two established tools that implement 3D visualization functionality and are currently maintained:
 Nucleome Browser [cite:@zhu_nucleome_2022] and WashU Epigenome Browser [cite:@li_washu_2019].
 
+Some categories by which we can sort these tools: a) web/desktop, b) AR and VR, c) server required or not.
+
+* Challenges
+Missing a unified file format.
+Non-standardized visual representations.
+Large data exploration, nested structures.
+Interoprable tools instead of separate visual analytics systems.
 
 * References
 #+print_bibliography:
